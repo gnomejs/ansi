@@ -15,7 +15,9 @@ export interface ISecretMasker {
 // deno-lint-ignore no-explicit-any
 const g = globalThis as any;
 let args: string[] = [];
-let write = (message?: string) => { console.log(message); };
+let write = (message?: string) => {
+    console.log(message);
+};
 if (typeof g.Deno !== "undefined") {
     args = Deno.args;
     write = (message?: string) => {
@@ -38,7 +40,7 @@ function handleStack(stack?: string) {
     return stack.substring(index + 1);
 }
 
-export function handleArguments(args: IArguments) : { msg: string | undefined, stack: string | undefined } {
+export function handleArguments(args: IArguments): { msg: string | undefined; stack: string | undefined } {
     let msg: string | undefined = undefined;
     let stack: string | undefined = undefined;
 
@@ -421,4 +423,4 @@ export class DefaultAnsiWriter implements AnsiWriter {
     }
 }
 
-export const writer : AnsiWriter = new DefaultAnsiWriter();
+export const writer: AnsiWriter = new DefaultAnsiWriter();

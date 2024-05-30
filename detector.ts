@@ -3,7 +3,6 @@ import { env } from "@gnome/env";
 import { equalsIgnoreCase, startsWithIgnoreCase } from "@gnome/strings";
 import { AnsiMode } from "./enums.ts";
 
-
 let RELEASE = "";
 
 // deno-lint-ignore no-explicit-any
@@ -80,7 +79,7 @@ function detectCi() {
     return null;
 }
 
-export function detectMode() : AnsiMode {
+export function detectMode(): AnsiMode {
     const gsterm = env.get("GNOMESTACK_TERM");
     if (gsterm && gsterm.length) {
         switch (gsterm) {
