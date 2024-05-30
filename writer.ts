@@ -15,8 +15,7 @@ export interface ISecretMasker {
 // deno-lint-ignore no-explicit-any
 const g = globalThis as any;
 let args: string[] = [];
-// deno-lint-ignore no-unused-vars
-let write = (message?: string) => {};
+let write = (message?: string) => { console.log(message); };
 if (typeof g.Deno !== "undefined") {
     args = Deno.args;
     write = (message?: string) => {
