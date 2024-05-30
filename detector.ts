@@ -2,9 +2,16 @@ import { DARWIN, WINDOWS } from "@gnome/os-constants";
 import { env } from "@gnome/env";
 import { equalsIgnoreCase, startsWithIgnoreCase } from "@gnome/strings";
 import { AnsiMode } from "./enums.ts";
-import { release } from "node:os";
 
-const RELEASE = release();
+
+let RELEASE = "";
+
+// deno-lint-ignore no-explicit-any
+const g = globalThis as any;
+if (typeof g.Deno !== "undefined" || typeof g.process !== "undefined") {
+    const { release } = await import("node:os");
+    RELEASE = release();
+}
 
 function isTermVariableAnsiCompatible() {
     const set = [

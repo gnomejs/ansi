@@ -14,7 +14,7 @@ export function isStdoutTerminal(): boolean {
         return g.process.stdout.isTTY;
     }
 
-    return false;
+    return true;
 }
 
 export function isStderrTerminal(): boolean {
@@ -24,7 +24,7 @@ export function isStderrTerminal(): boolean {
         return g.process.stderr.isTTY;
     }
 
-    return false;
+    return true;
 }
 
 export class AnsiSettings {
